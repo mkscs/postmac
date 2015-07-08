@@ -1,4 +1,6 @@
 #!/bin/bash
+# based on thoughtbot's laptop script
+# shamelessly adapted to my needs
 
 install_log="$HOME/$0_$(date +"%Y_%m_%d").out"
 bottles="$HOME/postmac/install_me"
