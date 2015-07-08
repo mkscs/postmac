@@ -11,11 +11,11 @@ timestamp() {
 }
 
 spit() {
-	local format
-	local ts
-	ts=$(timestamp)
-	format="%s %-25s %s\n"
-	printf "$format" "$ts" "$1" "[ $2 ]" |tee -a "$install_log"
+  local format
+  local ts
+  ts=$(timestamp)
+  format="%s %-25s %s\n"
+  printf "$format" "$ts" "$1" "[ $2 ]" |tee -a "$install_log"
 }
 
 isBrew() {
