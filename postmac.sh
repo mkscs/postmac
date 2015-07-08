@@ -7,7 +7,7 @@ casks=()
 brews=()
 
 timestamp() {
-	date +'%H:%M:%S'
+  date +'%H:%M:%S'
 }
 
 spit() {
