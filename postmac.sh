@@ -126,11 +126,7 @@ case "$SHELL" in
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # downloading and executing random code from the internet. Yay!
     mv _clean.zsh-theme "$HOME/.oh-my-zsh/themes"
     mv com.apple.Terminal.plist "/Users/$(whoami)/Library/Preferences/com.apple.Terminal.plist"
-    perl -pi.bkp -e 'ZSH_THEME="robbyrussell"/ZSH_THEME="_clean"/'
+    perl -pi.bkp -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="_clean"/' "$HOME/.zshrc"
     spit "Shell to" "$(which zsh)"
     ;;
 esac
-
-if [ ! -f "$HOME/.zshrc" ]; then
-  touch "$HOME/.zshrc"
-fi
