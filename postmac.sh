@@ -110,9 +110,9 @@ if ! command -v rvm >/dev/null;then
   zsh -c 'rvm install ruby'
 else
   spit "RVM installed " "$(which rvm)"
-  ruby_current=$(ruby -v | cut -f2 -d " " | awk -F 'p' '{print $1}')
+  ruby_installed=$(ruby -v | cut -f2 -d " " | awk -F 'p' '{print $1}')
   ruby_latest="$(curl -sSL http://ruby.thoughtbot.com/latest)"
-  spit "Ruby installed" "$ruby_current"
+  spit "Ruby installed" "$ruby_installed"
   spit "Ruby latest " "$ruby_latest"
 fi
 
@@ -123,7 +123,10 @@ case "$SHELL" in
     spit "Shell" "$(which zsh)"
     ;;
   *)
-    chsh -s "$(which zsh)"
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" # downloading and executing random code from the internet. Yay!
+    mv _clean.zsh-theme "$HOME/.oh-my-zsh/themes"
+    mv com.apple.Terminal.plist "/Users/$(whoami)/Library/Preferences/com.apple.Terminal.plist"
+    perl -pi.bkp -e 'ZSH_THEME="robbyrussell"/ZSH_THEME="_clean"/'
     spit "Shell to" "$(which zsh)"
     ;;
 esac
