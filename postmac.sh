@@ -18,6 +18,17 @@ spit() {
   format="%s %-25s %s\n"
   printf "$format" "$ts" "$1" "[ $2 ]" | tee -a "$install_log"
 }
+
+{
+	if [ ! -d "/usr/local/Cellar/brew-cask/" ];then
+		spit "Installing" "caskroom"
+		brew install caskroom/cask/brew-cask
+	else
+		:
+	fi
+}
+
+
 isBrew() {
   local item
   item=$(brew info "$1" 2>/dev/null | head -1 | cut -f1 -d ":")
@@ -138,4 +149,5 @@ case "$SHELL" in
     spit "Shell to" "$(which zsh)"
     ;;
 esac
+
 
