@@ -7,6 +7,6 @@ Use cask's full name to prevent collision eg
 Caskroom/cask/dash instead of just "dash"
 
 **assets/** contains
-.. zsh theme config
-.. Terminal theme (Flat)
-.. snippets (opinionated settings or just remarks)
+* zsh theme config
+* Terminal theme (Flat)
+* snippets (opinionated settings or just remarks)
