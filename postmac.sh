@@ -20,12 +20,12 @@ spit() {
 }
 
 {
-	if [ ! -d "/usr/local/Cellar/brew-cask/" ];then
-		spit "Installing" "caskroom"
-		brew install caskroom/cask/brew-cask
-	else
-		:
-	fi
+  if [ ! -d "/usr/local/Cellar/brew-cask/" ];then
+    spit "Installing" "caskroom"
+    brew install caskroom/cask/brew-cask
+  else
+    :
+  fi
 }
 
 
