@@ -128,8 +128,8 @@ case "$SHELL" in
     # downloading and executing random code from the internet. Yay!
   fi
     chsh -s $(which zsh)
-    mv _clean.zsh-theme "$HOME/.oh-my-zsh/themes"
-    open "./Flat.terminal"
+    mv "./assets/_clean.zsh-theme" "$HOME/.oh-my-zsh/themes"
+    open "./assets/Flat.terminal"
     sleep 1
     defaults write /Users/$USER/Library/Preferences/com.apple.Terminal.plist "Default Window Settings" "Flat"
     defaults write /Users/$USER/Library/Preferences/com.apple.Terminal.plist "Startup Window Settings" "Flat"
