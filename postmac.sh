@@ -1,7 +1,6 @@
 #!/bin/bash
 # based on thoughtbot's laptop script
 # shamelessly adapted to my needs
-
 install_log="$HOME/$0_$(date +"%Y_%m_%d").out"
 bottles="$HOME/postmac/install_me"
 
@@ -17,8 +16,18 @@ spit() {
   local ts
   ts=$(timestamp)
   format="%s %-25s %s\n"
-  printf "$format" "$ts" "$1" "[ $2 ]" |tee -a "$install_log"
+  printf "$format" "$ts" "$1" "[ $2 ]" | tee -a "$install_log"
 }
+
+{
+  if [ ! -d "/usr/local/Cellar/brew-cask/" ];then
+    spit "Installing" "caskroom"
+    brew install caskroom/cask/brew-cask
+  else
+    :
+  fi
+}
+
 
 isBrew() {
   local item
@@ -45,8 +54,8 @@ bottles_installable() {
   done
 
   for e in "${casks[@]}"; do
-    if brew cask list -1 | grep -Fqx "$(brew_name "$e")"; then
-      :
+    if brew cask list -1 | grep -Fqx "$(cask_name "$e")"; then
+      spit "Installed" "$e"
     else
       spit "Installing" "$e"
       brew cask install "$e"
@@ -56,6 +65,9 @@ bottles_installable() {
 
 brew_name() {
   brew info "$1" 2>/dev/null | head -1 | cut -f1 -d ":"
+}
+cask_name() {
+  brew cask info "$1" 2>/dev/null | head -1 | cut -f1 -d ":"
 }
 
 brews_upgradeable() {
@@ -139,3 +151,6 @@ case "$SHELL" in
     spit "Shell to" "$(which zsh)"
     ;;
 esac
+
+
+
