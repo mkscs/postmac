@@ -121,18 +121,20 @@ fi
 case "$SHELL" in
   */zsh)
     spit "Shell" "$(which zsh)"
+    spit "Unchanged" "zsh theme"
+    spit "Unchanged" "terminal theme"
     ;;
   *)
   if [ ! -d "$HOME/.oh-my-zsh/" ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     # downloading and executing random code from the internet. Yay!
   fi
-    chsh -s $(which zsh)
+    chsh -s "$(which zsh)"
     mv "./assets/_clean.zsh-theme" "$HOME/.oh-my-zsh/themes"
     open "./assets/Flat.terminal"
     sleep 1
-    defaults write /Users/$USER/Library/Preferences/com.apple.Terminal.plist "Default Window Settings" "Flat"
-    defaults write /Users/$USER/Library/Preferences/com.apple.Terminal.plist "Startup Window Settings" "Flat"
+    defaults write /Users/"$USER"/Library/Preferences/com.apple.Terminal.plist "Default Window Settings" "Flat"
+    defaults write /Users/"$USER"/Library/Preferences/com.apple.Terminal.plist "Startup Window Settings" "Flat"
     perl -pi.bkp -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="_clean"/' "$HOME/.zshrc"
     spit "Shell to" "$(which zsh)"
     ;;
