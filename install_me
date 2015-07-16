@@ -1,1 +1,20 @@
+<<<<<<< master
 caskroom/cask/brew-cask
+=======
+<<<<<<< mkscs
+docker
+boot2docker
+irssi
+npm
+mysql
+virtualbox
+unrar
+vlc
+codekit
+Caskroom/cask/dash
+textmate
+adium
+dropbox
+=======
+>>>>>>> local
+>>>>>>> local
