@@ -101,7 +101,7 @@ brew_file() {
   local filename="$1"
   local name
 
-  while read -r line
+  while read -r line || [[ -n "$line" ]]
   do
     name="$line"
     bottle_sort "$name"
