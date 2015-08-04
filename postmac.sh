@@ -20,7 +20,7 @@ spit() {
 }
 
 {
-  if [ ! -d "/usr/local/Cellar/brew-cask/" ];then
+  if [[ ! -d "/usr/local/Cellar/brew-cask/" ]];then
     spit "Installing" "caskroom"
     brew install caskroom/cask/brew-cask
   else
@@ -32,7 +32,7 @@ spit() {
 isBrew() {
   local item
   item=$(brew info "$1" 2>/dev/null | head -1 | cut -f1 -d ":")
- ! [ -z "$item" ]
+ ! [[ -z "$item" ]]
 }
 
 
@@ -40,7 +40,7 @@ isCask() {
   local item
   item=$(brew cask info "$1" 2>/dev/null | head -1 | cut -f1 -d ":")
 
- ! [ -z "$item" ]
+ ! [[ -z "$item" ]]
 }
 
 bottles_installable() {
